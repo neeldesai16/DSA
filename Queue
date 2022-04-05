@@ -29,7 +29,7 @@ void delete()
 		printf("%d removed from queue!",q[f++]); //if not than removing from the queue!
 	}
 }
-void display() //display function
+void display() //display functions
 {
 	int i;
 	for(i=f;i<r;i++)
