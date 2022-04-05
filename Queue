@@ -1,0 +1,71 @@
+//Queue program
+//By: Neel Desao
+#include<stdio.h> 
+int q[10],f=-1,r=-1; //Defing array size 10, front=-1 and rear=-1
+int size;
+int arr[25], n;
+void insert() //insert function
+{
+	if(f==-1)
+	f=r=0;
+	if(r>=size) //checking if rear is greater than size (if yes queue is full)
+	{
+		printf("\n Queue is full!"); 
+	}
+	else
+	{
+		printf("\n Enter values to insert"); //Taking value as input doing rear++
+		scanf("%d",&q[r++]);
+	}
+}
+void delete()
+{
+	if(f>=r) //	Checking front is grater than or equal to rear if yes than queue is empty
+	{
+		printf("\n Queue is empty");
+	}
+	else
+	{
+		printf("%d removed from queue!",q[f++]); //if not than removing from the queue!
+	}
+}
+void display() //display function
+{
+	int i;
+	for(i=f;i<r;i++)
+	{
+		printf("%d,",q[i]);
+	}
+}
+
+void main()
+{
+	printf("\n Enter the size of elements:"); //taking what elements we require
+	scanf("%d",&size);
+	int ch;
+	while(ch!=5)
+	{
+		printf("\n 1. Insert in queue");
+		printf("\n 2. Delete from queue");
+		printf("\n 3. Display from queue");
+		printf("\n 4. Selection Sort");
+		printf("\n 5. EXIT \n");
+		scanf("%d",&ch);
+		switch(ch)
+		{
+			case 1:
+				insert();
+				break;
+			case 2:
+				delete();
+				break;
+			case 3:
+				display();
+				break;
+			case 4:
+				break;
+			default: //default if value not in between 1 to 4
+				printf("Invalid input, Please try again!");
+		}
+	}
+}
