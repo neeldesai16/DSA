@@ -1,0 +1,30 @@
+//summation of all values in linked list
+void summ()
+{
+    int s=0;
+    temp=head;
+    while (temp!=NULL)
+    {
+        s = temp->id + s;
+        temp=temp->next;
+    }
+    printf("\n Sum is:%d",s);
+    //cout<<"\n\nSum is : "<<s;
+}
+
+//Count even odd values
+void even_odd()
+{
+    int e=0,o=0;
+    temp=head;
+    while (temp!=NULL)
+    {
+        if (temp->id%2==0)
+            e++;
+        else 
+            o++;
+        temp=temp->next;
+    }
+    printf("\n Even numbers are: %d",e);
+    printf("\n Odd numbers are: %d",o);
+}
