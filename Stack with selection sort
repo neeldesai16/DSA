@@ -1,0 +1,85 @@
+//Stack program(Push,pop,print)
+#include<stdio.h>
+int arr[10],top=-1; //defining top value and array size
+int size;
+void push()
+{
+	if(top>=size-1)
+	printf("\n Stack Over flow! \n"); //Stack overflow 
+	else
+	{
+		printf("\n Enter value to push: \n"); //if value not greater than size-1 than taking value
+		scanf("%d",&arr[++top]);
+	}
+}
+void pop()
+{
+	if(top<0)
+	{
+		printf("\n Stack Underflow!\n"); //Stack underflow
+	}
+	else
+	{
+		printf("\n %d Removed from stack",arr[top--]); //Removing of top is not less than 0
+	}
+}
+void display() //displaying output
+{
+	int i;
+	for(i=top;i>=0;i--)
+	{
+		printf("%d,",arr[i]);
+	}
+}
+
+void selectionsort()
+{
+	int i,j,temp,min;
+	for (i=0;i<=top;i++)
+	{
+		min=i;
+		for (j=i;j<=top;j++)
+		{
+			if (arr[j]<arr[min])
+				min=j;
+		}
+		temp=arr[i];
+		arr[i]=arr[min];
+		arr[min]=temp;
+	}
+}
+
+void main()
+{
+	printf("\n Enter the size of elements:"); //taking what elements we require
+	scanf("%d",&size);
+	int ch;
+	while(ch!=5)
+	{
+		printf("\n 1. PUSH");
+		printf("\n 2. POP");
+		printf("\n 3. DISPLAY");
+		printf("\n 4. Selection sort \n");
+		printf("\n 5. Exit \n");
+		scanf("%d",&ch);
+		switch(ch)
+		{
+			case 1:
+				push();
+				break;
+			case 2:
+				pop();
+				break;
+			case 3:
+				display();
+				break;
+			case 4:
+				selectionsort();
+				break;
+			case 5:
+				break;
+			default: //default if value not in between 1 to 4
+				printf("Invalid input, Please try again!");
+		}
+	}
+}
