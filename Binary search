@@ -1,0 +1,44 @@
+#include<stdio.h>
+
+void bsearch(int arr[],int n,int key)
+{
+	int f,l=0,h,m;
+	h=n-1;
+	while(l<=h)
+	{
+		m=(l+h)/2;
+		if(key==arr[m])
+		{
+			printf("%d found on index %d",arr[m],m);
+			return;
+		}
+		else if(key>arr[m])
+			l=m+1;
+		else if(key<arr[m])
+			h=m-1;
+	}
+	if(f==0)
+		printf("%d not found",key);
+}
+
+void get(int arr[],int n)
+{
+	int i;
+	for(i=0;i<n;i++)
+	{
+		printf("Enter value for index %d: ",i);
+		scanf("%d",&arr[i]);
+	}
+}
+
+void main()
+{
+	int n;
+	printf("Enter number of records you want: ");
+	scanf("%d",&n);
+	int arr[n],key;
+	get(arr,n);
+	printf("Enter the value you want to search: ");
+	scanf("%d",&key);
+	bsearch(arr,n,key);
+}
