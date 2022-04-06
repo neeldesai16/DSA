@@ -1,0 +1,39 @@
+#include<stdio.h>
+
+void lsearch(int arr[],int n,int key)
+{
+	int i,f;
+	for(i=0;i<n;i++)
+	{
+		if(arr[i]==key)
+		{
+			printf("%d found on index %d",arr[i],i);
+			f=1;
+			return;
+		}
+	}
+	if(f==0)
+		printf("%d not found",key);
+}
+
+void get(int arr[],int n)
+{
+	int i;
+	for(i=0;i<n;i++)
+	{
+		printf("Enter value for index %d: ",i);
+		scanf("%d",&arr[i]);
+	}
+}
+
+void main()
+{
+	int n;
+	printf("Enter number of records you want: ");
+	scanf("%d",&n);
+	int arr[n],key;
+	get(arr,n);
+	printf("Enter the value you want to search: ");
+	scanf("%d",&key);
+	lsearch(arr,n,key);
+}
