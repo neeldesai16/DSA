@@ -1,0 +1,143 @@
+#include<stdio.h>
+#include<stdlib.h>
+#include<string.h>
+int c;
+struct list
+{
+	char str[10];
+	struct list *next;
+	struct list *pre;
+}*head=NULL,*last=NULL,*node,*temp;
+void create()
+{
+	node=(struct list*)malloc(sizeof(struct list));
+	node->pre=NULL;
+	node->next=NULL;
+	printf("\n enter string: ");
+	scanf("%s",node->str);
+	if(head==NULL)
+	{
+		head=last=node;
+	}
+	else
+	{
+		last->next=node;
+		node->pre=last;
+		last=node;
+	}
+}
+void display()
+{
+	temp=head;
+	while(temp!=NULL)
+	{
+		printf("%s->",temp->str);
+		temp=temp->next;
+	}
+	
+}
+void addnode()
+{
+	node=(struct list*)malloc(sizeof(struct list));
+	node->pre=NULL;
+	node->next=NULL;
+	printf("\nenter string: ");
+	scanf("%s",node->str);
+	if(head==NULL)
+	{
+		head=last=node;
+	}
+	else
+	{
+		if(strcmp(last->str,node->str)  >0)
+		{
+			head->pre=node;
+			node->next=head;
+			head=node;
+		}
+		else
+		{
+			last->next=node;
+			node->pre=last;
+			last=node;
+		}
+	}
+}
+void count()
+{
+	c=0;
+	temp=head;
+	while(temp!=NULL)
+	{
+		c=c+1;
+		temp=temp->next;
+	}
+	printf("\n total nodes are %d",c);
+	
+}
+int check()
+{
+	char str1[20];
+	printf("\n enter string: ");
+	scanf("%s",&str1);
+	int i=0;
+	if(islower(str1[i]))
+	{
+		return 1;
+	}
+	else 
+	{
+		return 0;
+	}
+}
+void display1()
+{
+	count();
+	int flag,i;
+	if(check()==1) //if lower then odd(start from 1)
+	{
+		temp=head;
+	}
+	else //else even(start from 2)
+	{
+		temp=head->next; //2nd node
+	}
+	while(temp!=NULL)
+	{
+		printf("\n%s",temp->str);
+		if(temp->next==NULL)
+		{
+			return; //if last node
+		}
+		temp=temp->next->next; //next to next
+	}
+}
+void main()
+{
+	int ch;
+	do
+	{
+		printf("\n1.craete");
+		printf("\n2.display");
+		printf("\n3.if privioue is large having lasrge then create node at first else last");
+		printf("\n4.display1");
+		printf("\n5.exit");
+		printf("\n enter your choice");
+		scanf("%d",&ch);
+		switch(ch)
+		{
+			case 1:create();
+					break;
+			case 2:display();
+					break;
+			case 3:addnode();
+					break;
+			case 4:display1();
+					break;
+			case 5:printf("\n exit");
+					break; 
+			default:printf("\n enter from the given option");
+					break;
+		}
+	}while(ch!=5);
+}
